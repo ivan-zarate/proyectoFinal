@@ -40,8 +40,12 @@ canvas.height = window.innerHeight;
 
 const jugador = new Jugador();
 const proyectiles = [];
+const proyectilesEnemigos = [];
 const invasores = [];
-console.log(proyectiles);
+let game = {
+    over: false,
+    activo: true,
+}
 const teclas = {
     a: {
         pressed: false,
@@ -60,39 +64,70 @@ let nuevasGrillas = 0;
 const start = document.getElementById("start");
 start.onclick = () => {
     document.querySelector('.espacio').style.display = "none";
+    if (!game.activo) return;
     requestAnimationFrame(start.onclick);
     context.fillStyle = 'black';
     context.fillRect(0, 0, canvas.width, canvas.height); //definimos el tamaño del fondo
     jugador.update();//aparecera nuestra nave
-    
+    proyectilesEnemigos.forEach((proyectilEnemigo, index) => {
+        //incluyo operadores ternarios
+        (proyectilEnemigo.position.y + proyectilEnemigo.height > canvas.height) ?
+            (setTimeout(() => { proyectilesEnemigos.splice(index, 1) }, 0)) : proyectilEnemigo.update();
+        if (proyectilEnemigo.position.y + proyectilEnemigo.height >= jugador.position.y &&
+            proyectilEnemigo.position.x + proyectilEnemigo.width >= jugador.position.x &&
+            proyectilEnemigo.position.x <= jugador.position.x + jugador.width) {
+            setTimeout(() => {
+                jugador.opacity = 0;
+                game.over = true;
+                
+            }, 10)
+
+            setTimeout(() => {
+                game.activo = false;
+                document.getElementById('fin').innerHTML ="GAME  OVER";
+                document.getElementById('start').innerHTML; 
+            }, 1000)
+        }
+    })
     //parametros para que aparezca correctamente el proyectil
     proyectiles.forEach((proyectil, index) => {
-        if (proyectil.position.y + proyectil.radius <= 0) {
-            proyectiles.splice(index, 1);
-        }
-        proyectil.update();
+        //incluyo operadores ternarios
+        (proyectil.position.y + proyectil.radius <= 0) ? proyectiles.splice(index, 1) : proyectil.update();
     });
 
     //Hacemos que aparezcan las grillas de invasores
     invasores.forEach((gridInvasores) => {
         gridInvasores.update();
+        if (nuevasGrillas % 100 === 0 && gridInvasores.enemigos.length > 0) {
+            let proyectilAleatorio = gridInvasores.enemigos[parseInt(Math.random() * gridInvasores.enemigos.length)]
+            proyectilAleatorio.shoot(proyectilesEnemigos);
+        }
         gridInvasores.enemigos.forEach((enemigo, i) => {
             enemigo.update({ velocidad: gridInvasores.velocidad });
+
             proyectiles.forEach((proyectil, j) => {
                 //con este if logramos que el proyectil empiece a eliminar correctamente a los enemigos
-                if (proyectil.position.y <= enemigo.position.y + enemigo.height && 
+                if (proyectil.position.y <= enemigo.position.y + enemigo.height &&
                     proyectil.position.x >= enemigo.position.x && proyectil.position.x <= enemigo.position.x + enemigo.width
-                    && proyectil.position.y>=enemigo.position.y) {
+                    && proyectil.position.y >= enemigo.position.y) {
                     setTimeout(() => {
                         gridInvasores.enemigos.splice(i, 1);
                         proyectiles.splice(j, 1);
+                        if (gridInvasores.enemigos.length > 0) {
+                            const primerInvasor = gridInvasores.enemigos[0];
+                            const ultimoInvasor = gridInvasores.enemigos[gridInvasores.enemigos.length - 1];
+                            gridInvasores.width = ultimoInvasor.position.x - primerInvasor.position.x + ultimoInvasor.width;
+                            gridInvasores.position.x = primerInvasor.position.x
+                        }
+
                     })
                 }
             })
         })
+
     })
     //Con este if generaremos nuevas grillas a partir de un numero determinado, se podria mejorar tambien con la funcion random
-    if (nuevasGrillas % 800 === 0) {
+    if (nuevasGrillas % 900 === 0) {
         invasores.push(new gridInvasores());
         nuevasGrillas = 0;
     }
@@ -106,7 +141,6 @@ start.onclick = () => {
         jugador.velocidad.x = 0;
     }
     nuevasGrillas++;
-    console.log(nuevasGrillas)//punto de control para saber si cumple la condicion de nueva grilla
 }
 
 

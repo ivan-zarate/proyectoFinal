@@ -6,6 +6,7 @@ class Jugador {
             x: 0,
             y: 0,
         }
+        this.opacity=1;
 
         const image = new Image();
         image.src = './img/spaceship.png'
@@ -16,12 +17,13 @@ class Jugador {
             this.height = image.height * this.scale;
             this.position = {
                 x: (canvas.width / 2) - (this.width / 2),
-                y: canvas.height - (this.height) - 15,
+                y: canvas.height - (this.height) -15,
             }
         }
     }
 
     draw() {
+            context.globalAlpha=this.opacity;
             context.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
     }
     update() {
@@ -88,6 +90,19 @@ class Enemigo {
             this.position.y += velocidad.y;
         }
     }
+    shoot(proyectilesEnemigos){
+        proyectilesEnemigos.push(new ProyectilEnemigo({
+            position:{
+                x:this.position.x + this.width/2,
+                y:this.position.y + this.height,
+            },
+            velocidad:{
+                x:0,
+                y:5,
+            }
+            
+        }))
+    }
 }
 
 //Creamos la grilla de enemigos
@@ -124,7 +139,24 @@ class gridInvasores {
         this.velocidad.y=0;
         if ((this.position.x + this.width)>= canvas.width || (this.position.x)<=0){
             this.velocidad.x=-this.velocidad.x; //con este if podemos hacer que la grilla no se salga de la pantalla
-            this.velocidad.y=20;//con este punto hacemos que la grilla comience a bajar despues de que rebote con los margenes
+            this.velocidad.y=20;//con este punto hacemos que la grilla comience a bajar despues de que rebote con los margenesx|
         }
     }
+}
+class ProyectilEnemigo {
+    constructor({ position, velocidad }) {
+        this.position = position;
+        this.velocidad = velocidad;
+        this.width = 3;
+        this.height = 10;
+    }
+    draw() {
+        context.fillStyle = 'yellow';
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+    update() {
+        this.draw();
+        this.position.y += this.velocidad.y;
+    }
+
 }
