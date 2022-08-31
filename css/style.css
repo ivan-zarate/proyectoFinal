@@ -46,6 +46,7 @@ body{
     font-weight: normal;
     position: absolute;
     padding-top: 1rem;
+    
 }
 
 .formulario {
@@ -72,6 +73,16 @@ body{
     display: flex;
     flex-direction: column;
 }
+.puntos{
+    color: white;
+    position: fixed;
+    z-index: 5;
+    left: 10px;
+    top: 10px;
+    font-family: 'ArcadeClassic', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
 #fin{
     font-family: 'ArcadeClassic', sans-serif;
     color: darkblue;
@@ -81,4 +92,27 @@ body{
     top: 40%;
     font-size: 100px;
     word-spacing: 2rem;
+}
+#estadisticas li{
+    position: absolute;
+    font-family: 'ArcadeClassic', sans-serif;
+    color: yellow;
+    left: 36vw;  
+    top: 30%;
+    list-style: none;
+    font-size: 1.5rem;
+    word-spacing: 10px;
+    border: 2px solid yellow;
+    padding: 2em;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+#estadisticas p{
+    padding-top: 20px;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+}
+#estadisticas h5{
+    font-size: 20px;
+    letter-spacing: 3px;
+    
 }

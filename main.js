@@ -30,7 +30,7 @@ registro.onclick = (usuario, password) => {
 }
 
 //inicializamos fondo sobre canvas para que podamos crear el juego
-
+const puntosSuma = document.querySelector('#puntosSuma');
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -46,6 +46,8 @@ let game = {
     over: false,
     activo: true,
 }
+let puntos = 0;
+let naves=0;
 const teclas = {
     a: {
         pressed: false,
@@ -60,6 +62,9 @@ const teclas = {
 let nuevasGrillas = 0;
 
 //Inicio de la funcion principal
+const DateTime = luxon.DateTime;
+let inicio = DateTime.now();
+console.log(inicio);
 
 const start = document.getElementById("start");
 start.onclick = () => {
@@ -79,14 +84,29 @@ start.onclick = () => {
             setTimeout(() => {
                 jugador.opacity = 0;
                 game.over = true;
-                
-            }, 10)
+
+            }, 10);
 
             setTimeout(() => {
                 game.activo = false;
-                document.getElementById('fin').innerHTML ="GAME  OVER";
-                document.getElementById('start').innerHTML; 
-            }, 1000)
+
+                document.getElementById('fin').innerHTML = "GAME  OVER";
+            }, 1000);
+            setTimeout(() => {
+                let fin = DateTime.now();
+                let Interval = luxon.Interval;
+                let duracion = Interval.fromDateTimes(inicio, fin);
+                document.querySelector('.puntos').style.display = "none";
+                document.querySelector('#fin').style.display = "none";
+                let listadoLi = document.getElementById('estadisticas');
+                listadoLi.innerHTML = "";
+                let li = document.createElement('li');
+                li.innerHTML = `<h5>Jugador: ${localStorage.getItem('Usuario')} </h5>
+                                <p>Naves eliminadas: ${naves} </p> 
+                                <p>Puntuacion: ${puntos} </p> 
+                                <p>Tiempo jugado: ${duracion.length('seconds')}</p>`
+                listadoLi.appendChild(li);
+            }, 2000);
         }
     })
     //parametros para que aparezca correctamente el proyectil
@@ -111,6 +131,9 @@ start.onclick = () => {
                     proyectil.position.x >= enemigo.position.x && proyectil.position.x <= enemigo.position.x + enemigo.width
                     && proyectil.position.y >= enemigo.position.y) {
                     setTimeout(() => {
+                        puntos += 100;
+                        naves +=1;
+                        puntosSuma.innerHTML = ("Puntos " + puntos);
                         gridInvasores.enemigos.splice(i, 1);
                         proyectiles.splice(j, 1);
                         if (gridInvasores.enemigos.length > 0) {
@@ -142,5 +165,7 @@ start.onclick = () => {
     }
     nuevasGrillas++;
 }
+
+
 
 

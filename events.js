@@ -33,7 +33,6 @@ addEventListener('keydown', (e) => {
                     }
                 })
                 )
-                teclas.space.pressed = true;
                 break;
         }
 })
@@ -59,7 +58,7 @@ addEventListener('keyup', (e) => {
             break;
 
         case ' ':
-            teclas.space.pressed = false;
+            
             break;
     }
 })
