@@ -1,0 +1,18 @@
+
+[
+{
+    "name":"GreenEnemy",
+    "life":"1 proyectil",
+    "velocidad":"media",
+    "info":"Este enemigo se caracteriza por su color verde y su tamaño",
+    "url":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.lovepik.com%2Ffree-png%2F20220125%2Flovepik-spacecraft-png-image_401703391_wh860.png&imgrefurl=https%3A%2F%2Fes.lovepik.com%2Fimage-401703391%2Fspacecraft.html&tbnid=Mg_4gEfWf-zztM&vet=12ahUKEwi9tu6j9oP6AhWUtJUCHSwkCPkQMygIegUIARDWAQ..i&docid=8NVPJF4AaROJ4M&w=860&h=860&q=naves%20png&ved=2ahUKEwi9tu6j9oP6AhWUtJUCHSwkCPkQMygIegUIARDWAQ"
+},
+{
+    "name":"Render",
+    "life":"2 proyectil",
+    "velocidad":"alta",
+    "info":"Este enemigo se caracteriza por su agilidad",
+    "url":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg2.freepng.es%2F20180509%2Fzlw%2Fkisspng-computer-icons-spacecraft-famous-spaceships-of-fac-5af381c8648371.0907602115259079124117.jpg&imgrefurl=https%3A%2F%2Fwww.freepng.es%2Fpng-zek7my%2F&tbnid=ndAhoR6oZS7G9M&vet=12ahUKEwi9tu6j9oP6AhWUtJUCHSwkCPkQMygtegUIARCpAg..i&docid=pr1Sc_iujfWAlM&w=900&h=520&q=naves%20png&ved=2ahUKEwi9tu6j9oP6AhWUtJUCHSwkCPkQMygtegUIARCpAg"
+}
+
+]

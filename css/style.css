@@ -65,9 +65,10 @@ body{
 #bienvenida{
     color: white;
     font-size: 3em;
-    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    font-family: 'ArcadeClassic', sans-serif;
     padding-bottom: 1em;
     padding-top: 1em;
+    word-spacing: .7em;
 }
 .entrada{
     display: flex;
@@ -115,4 +116,33 @@ body{
     font-size: 20px;
     letter-spacing: 3px;
     
+}
+#enemigos{
+    position: absolute;
+    left: 42.6vw;
+    top: 62vh;
+    padding-left: 65px;
+    padding-right: 63px;
+}
+
+.listadoEnemigos li{
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: blue;
+    list-style: none;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    border: 2px solid yellow;
+    padding: 1em; 
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+.listadoEnemigos h2{
+    margin-bottom: .6em;
+}
+.listadoEnemigos p{
+    margin: .4em;
+}
+.listadoEnemigos button{
+    position: absolute;
+    left: 45%;
 }

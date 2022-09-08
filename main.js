@@ -26,7 +26,7 @@ registro.onclick = (usuario, password) => {
     password = toString;
     localStorage[password];
     document.querySelector('.entrada').style.display = "none";
-    document.getElementById('bienvenida').innerHTML = "Bienvenido " + usuario;
+    document.getElementById('bienvenida').innerHTML = "Hola "+ usuario;
 }
 
 //inicializamos fondo sobre canvas para que podamos crear el juego
@@ -69,6 +69,7 @@ console.log(inicio);
 const start = document.getElementById("start");
 start.onclick = () => {
     document.querySelector('.espacio').style.display = "none";
+    document.querySelector('#enemigos').style.display = "none";
     if (!game.activo) return;
     requestAnimationFrame(start.onclick);
     context.fillStyle = 'black';
@@ -166,6 +167,40 @@ start.onclick = () => {
     nuevasGrillas++;
 }
 
+const listaEnemigos = document.getElementById("enemigos");
+listaEnemigos.onclick = () => {
+document.querySelector('.listadoEnemigos').style.display = "";
+document.querySelector('#enemigos').style.display = "none";
+document.querySelector('.espacio').style.display = "none";
+const lista = document.querySelector('.listadoEnemigos')
+fetch('/enemigos.json')
+    .then( (resp) => resp.json() )
+    .then( (data) => {
+        data.forEach((nave) => {
+            let li = document.createElement('li')
+            li.innerHTML += `
+                <h2>Nombre: ${nave.name}</h2>
+                <p>Duración: ${nave.life}</p>
+                <p>Velocidad: ${nave.velocidad}</p>
+                <p>Información: ${nave.info}</p>
+                <url>${nave.url}</url>
+                
+            `
+        lista.append(li);
+        
+        })
+        let btn = document.createElement('button');
+            btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            volver();
+        })
+        btn.innerText = 'VOLVER';
+        lista.append(btn);
+        })
 
-
-
+}
+function volver(){
+    document.querySelector('.listadoEnemigos').style.display = "none";
+    document.querySelector('.espacio').style.display = "";
+    document.querySelector('#enemigos').style.display = "";
+}
