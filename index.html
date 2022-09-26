@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One:ital@1&display=swap"
         rel="stylesheet">
-        <link href="http://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <title>Coder-Invaders</title>
 </head>
@@ -18,7 +19,7 @@
 <body>
     <div class="estrellas">
         <main class="espacio">
-            <h1>Coder Invaders</h1>
+            <h1 class="wow animate__animated animate__pulse">Coder-Invaders</h1>
             <form class="formulario">
                 <div class="entrada">
                     <input id="usuario" type="text" placeholder="Ingrese nombre">
@@ -26,23 +27,31 @@
                     <button id="registro" type="button">INGRESAR</button>
                 </div>
                 <p id="bienvenida"></p>
-                
                 <button id="start" type="button">START</button>
             </form>
-            
         </main>
     </div>
-    <button type="button" id="enemigos">ENEMIGOS</button>
-            <ul class="listadoEnemigos"></ul>
+    <a href="#" id="trofeo" ><img src="./img/trofeo.png" alt="imagen de trofeo"></a>
+    <section class="listadoPuntajes"></section>
+    <a href="#" id="enemigos"><img src="./img/alien1.png" alt="alien rosa"></a>
+    <section class="listadoEnemigos"></section>
     <p class="puntos"> <span id="puntosSuma"></span></p>
     <canvas></canvas>
     <h2 id="fin"></h2>
-    <ul id="estadisticas"></ul>
+    <div class="detalles">
+        <div id="estadisticas"></div>
+    </div>
     <!-- Definimos los distintos js que utilizaremos -->
-    <script src="luxon.js"></script>
-    <script src="constructors.js"></script>
-    <script src="events.js"></script>
+    
+    <script src="./js/json.js"></script>
+    <script src="./js/luxon.js"></script>
+    <script src="./js/events.js"></script>
+    <script src="./js/constructors.js"></script>
     <script src="main.js"></script>
+    <script src="./js/wow.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </body>
 
 </html>

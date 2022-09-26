@@ -1,44 +1,52 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: black;
     position: fixed;
 }
-.estrellas{
+
+.estrellas {
     max-height: 30vh;
 }
-.estrellas i{
+
+.estrellas i {
     position: absolute;
     width: 2px;
     height: 2px;
     border-radius: 70px;
-    top:-10px;
+    top: -10px;
     background: white;
     animation: estrellas linear infinite;
-    
+
 }
-@keyframes estrellas{
-    0%{
-        top:-10px;
+
+@keyframes estrellas {
+    0% {
+        top: -10px;
     }
-    50%{
-        top:60vh;
+
+    50% {
+        top: 60vh;
     }
-    100%{
-        top:100vh;
+
+    100% {
+        top: 100vh;
     }
 }
-.espacio{
+
+.espacio {
     position: relative;
     min-height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.espacio h1{
+
+.espacio h1 {
     color: yellow;
     font-family: 'Alumni Sans Collegiate One', sans-serif;
     letter-spacing: 5px;
@@ -46,7 +54,24 @@ body{
     font-weight: normal;
     position: absolute;
     padding-top: 1rem;
-    
+
+}
+
+#trofeo {
+    position: absolute;
+    left: 2vw;
+    top: 67vh;
+}
+
+#trofeo img {
+    width: 10vw;
+
+}
+
+#trofeo img:hover {
+    transform: scale(1.2);
+    transition: .3s;
+    filter: drop-shadow(0 0 5px gold);
 }
 
 .formulario {
@@ -55,14 +80,18 @@ body{
     flex-direction: column;
     position: absolute;
     top: 7em;
-    
+
 }
-.formulario input, button{
+
+.formulario input,
+button {
     margin-top: 15px;
     padding: 15px;
     margin-bottom: 15px;
+    box-shadow: inset 0 0 5px red, 0 0 10px red, 0 0 20px darkred;
 }
-#bienvenida{
+
+#bienvenida {
     color: white;
     font-size: 3em;
     font-family: 'ArcadeClassic', sans-serif;
@@ -70,11 +99,13 @@ body{
     padding-top: 1em;
     word-spacing: .7em;
 }
-.entrada{
+
+.entrada {
     display: flex;
     flex-direction: column;
 }
-.puntos{
+
+.puntos {
     color: white;
     position: fixed;
     z-index: 5;
@@ -84,22 +115,44 @@ body{
     font-weight: bolder;
     letter-spacing: 2px;
 }
-#fin{
+
+#fin {
     font-family: 'ArcadeClassic', sans-serif;
     color: darkblue;
     text-shadow: 2px;
     position: absolute;
-    left: 32%;  
+    left: 32%;
     top: 40%;
     font-size: 100px;
     word-spacing: 2rem;
 }
-#estadisticas li{
+
+.detalles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detalles button {
+    position: absolute;
+    top: 80%;
+    left: 47vw;
+    background-color: transparent;
+    color: yellow;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+    border: 2px solid yellow;
+}
+
+.detalles button:hover {
+    color: red;
+}
+
+#estadisticas section {
     position: absolute;
     font-family: 'ArcadeClassic', sans-serif;
     color: yellow;
-    left: 36vw;  
-    top: 30%;
+    left: 28vw;
+    top: 28%;
     list-style: none;
     font-size: 1.5rem;
     word-spacing: 10px;
@@ -107,42 +160,153 @@ body{
     padding: 2em;
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
 }
-#estadisticas p{
+
+#estadisticas p {
     padding-top: 20px;
     word-spacing: 5px;
     letter-spacing: 3px;
 }
-#estadisticas h5{
+
+#estadisticas h5 {
     font-size: 20px;
     letter-spacing: 3px;
-    
-}
-#enemigos{
-    position: absolute;
-    left: 42.6vw;
-    top: 62vh;
-    padding-left: 65px;
-    padding-right: 63px;
+
 }
 
-.listadoEnemigos li{
-    color: black;
+#enemigos {
+    position: absolute;
+    left: 90vw;
+    top: 82vh;
+}
+
+#enemigos img {
+    width: 7vw;
+}
+
+#enemigos img:hover {
+    animation: mover 1s infinite;
+}
+
+@keyframes mover {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    25% {
+        transform: rotate(-25deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(25deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+
+}
+
+.listadoEnemigos {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 60vw;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.listadoEnemigos::-webkit-scrollbar {
+    width: 22px;
+    background: black;
+}
+
+.listadoEnemigos::-webkit-scrollbar-thumb {
+    background-color: darkblue;
+    border-radius: 30px;
+
+}
+
+.listadoEnemigos div {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: blue;
     list-style: none;
     font-size: .8rem;
     letter-spacing: 1px;
-    border: 2px solid yellow;
-    padding: 1em; 
+    border-bottom: 2px solid yellow;
+    padding: 1em;
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
 }
-.listadoEnemigos h2{
-    margin-bottom: .6em;
+
+.listadoEnemigos img {
+    width: 7.5em;
+    position: absolute;
+    top: 1.5em;
+    margin-left: 4em;
+    left: 40vw;
 }
-.listadoEnemigos p{
+
+.listadoEnemigos h2 {
+    margin-bottom: .6em;
+    color: darkred;
+}
+
+.listadoEnemigos p {
     margin: .4em;
 }
-.listadoEnemigos button{
-    position: absolute;
-    left: 45%;
+
+.listadoEnemigos button {
+    width: fit-content;
+    position: relative;
+    top: 1em;
+    margin: 0 auto;
+}
+
+.listadoPuntajes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 60vw;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.listadoPuntajes div {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: blue;
+    list-style: none;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid yellow;
+    padding: 1em;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.listadoPuntajes button {
+    width: fit-content;
+    position: relative;
+    top: 1em;
+    margin: 0 auto;
+}
+
+.listadoPuntajes p {
+    font-size: 2.5em;
+    text-shadow: 0 0 5px darkblue, 0 0 15px darkblue, 0 0 30px darkblue, 0 0 50px darkblue;
+}
+
+.listadoPuntajes h2 {
+    margin-bottom: .6em;
+    color: white;
+    text-shadow: 0 0 5px darkred, 0 0 15px darkred, 0 0 30px darkred, 0 0 50px darkred;
 }
