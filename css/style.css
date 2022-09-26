@@ -48,9 +48,9 @@ body {
 
 .espacio h1 {
     color: yellow;
-    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     letter-spacing: 5px;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: normal;
     position: absolute;
     padding-top: 1rem;
@@ -94,7 +94,7 @@ button {
 #bienvenida {
     color: white;
     font-size: 3em;
-    font-family: 'ArcadeClassic', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     padding-bottom: 1em;
     padding-top: 1em;
     word-spacing: .7em;
@@ -111,19 +111,19 @@ button {
     z-index: 5;
     left: 10px;
     top: 10px;
-    font-family: 'ArcadeClassic', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-weight: bolder;
     letter-spacing: 2px;
 }
 
 #fin {
-    font-family: 'ArcadeClassic', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: darkblue;
     text-shadow: 2px;
     position: absolute;
-    left: 32%;
-    top: 40%;
-    font-size: 100px;
+    left: 27%;
+    top: 30%;
+    font-size: 5em;
     word-spacing: 2rem;
 }
 
@@ -136,7 +136,7 @@ button {
 .detalles button {
     position: absolute;
     top: 80%;
-    left: 47vw;
+    left: 46vw;
     background-color: transparent;
     color: yellow;
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
@@ -149,12 +149,12 @@ button {
 
 #estadisticas section {
     position: absolute;
-    font-family: 'ArcadeClassic', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: yellow;
-    left: 28vw;
+    left: 26vw;
     top: 28%;
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     word-spacing: 10px;
     border: 2px solid yellow;
     padding: 2em;
